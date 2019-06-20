@@ -1,7 +1,7 @@
 ---
 marks:
-  - filterwarnings:
-    - "ignore::urllib3.exceptions.InsecureRequestWarning"
+  - usefixtures:
+    - filter_insecure_request_warning
 # Every test file has one or more tests...
 test_name: Get some fake data from the JSON placeholder API
 
