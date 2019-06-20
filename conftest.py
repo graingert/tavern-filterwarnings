@@ -7,6 +7,8 @@ import urllib3.exceptions
 
 @pytest.fixture
 def filter_insecure_request_warning(request):
-    request.applymarker(
-        pytest.mark.filterwarnings("ignore::urllib3.exceptions.InsecureRequestWarning")
-    )
+    with warnings.catch_warnings():
+        warnings.simplefilter(
+            "ignore", category=urllib3.exceptions.InsecureRequestWarning
+        )
+        yield
